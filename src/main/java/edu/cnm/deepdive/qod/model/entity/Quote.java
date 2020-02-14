@@ -1,8 +1,10 @@
 package edu.cnm.deepdive.qod.model.entity;
 
 import java.util.Date;
+import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -32,11 +34,10 @@ import org.springframework.lang.NonNull;
 public class Quote {
 
   @NonNull
-  @Id
-  @GeneratedValue(generator = "uuid2")
+  @Id@GeneratedValue(generator = "uuid2")
   @GenericGenerator(name = "uuid2", strategy = "uuid2")
   @Column(name = "quote_id", columnDefinition = "CHAR(16) FOR BIT DATA",
-    nullable = false, updatable = false)
+      nullable = false, updatable = false)
   private UUID id;
 
   @NonNull
@@ -56,27 +57,20 @@ public class Quote {
   private String text;
 
   @NonNull
-  @ManyToMany(fetch = FetchType.LAZY,
-    cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+  @ManyToMany(
+      fetch = FetchType.LAZY,
+      cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}
+  )
   @JoinTable(
-      joinColumns = {
-          @JoinColumn(name = "quote_id")
-      },
-      inverseJoinColumns = {
-          @JoinColumn(name = "source_id")
-      }
+      joinColumns = @JoinColumn(name = "quote_id"),
+      inverseJoinColumns = @JoinColumn(name = "source_id")
   )
   @OrderBy("name ASC")
-  private List<Source> sources = new LinkedList<>();
+  private Set<Source> sources = new LinkedHashSet<>();
 
   @NonNull
   public UUID getId() {
     return id;
-  }
-
-  @NonNull
-  public String getText() {
-    return text;
   }
 
   @NonNull
@@ -89,12 +83,18 @@ public class Quote {
     return updated;
   }
 
+  @NonNull
+  public String getText() {
+    return text;
+  }
+
   public void setText(@NonNull String text) {
     this.text = text;
   }
 
   @NonNull
-  public List<Source> getSources() {
+  public Set<Source> getSources() {
     return sources;
   }
+
 }
