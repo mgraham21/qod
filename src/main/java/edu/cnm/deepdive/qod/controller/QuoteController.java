@@ -51,6 +51,9 @@ public class QuoteController {
 
   @GetMapping(value = "/search", produces = MediaType.APPLICATION_JSON_VALUE)
   public Iterable<Quote> search(@RequestParam("q") String fragment) {
+    if (fragment.length() < 3) {
+      throw new SearchTermTooShortException();
+    }
     return quoteRepository.getAllByTextContainsOrderByTextAsc(fragment);
   }
 
