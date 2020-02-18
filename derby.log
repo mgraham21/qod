@@ -1,6 +1,6 @@
 ----------------------------------------------------------------
-Mon Feb 17 16:30:57 MST 2020:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0170-557d-9064-000006db4140 
+Tue Feb 18 10:42:28 MST 2020:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0170-5964-e106-000006f4bcc0 
 on database directory C:\Users\15055\Desktop\bootcamp\projects\qod\qod_db with class loader sun.misc.Launcher$AppClassLoader@18b4aac2 
 Loaded from file:/C:/Users/15055/.m2/repository/org/apache/derby/derby/10.14.2.0/derby-10.14.2.0.jar
 java.vendor=Amazon.com Inc.
